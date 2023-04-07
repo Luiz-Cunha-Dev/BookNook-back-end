@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model categories {
+  id                                                    Int              @id @default(autoincrement())
+  name                                                  String
+  entertainments_entertainments_category1IdTocategories entertainments[] @relation("entertainments_category1IdTocategories")
+  entertainments_entertainments_category2IdTocategories entertainments[] @relation("entertainments_category2IdTocategories")
+  entertainments_entertainments_category3IdTocategories entertainments[] @relation("entertainments_category3IdTocategories")
+}
+
+model entertainments {
+  id                                                Int                   @id @default(autoincrement())
+  name                                              String
+  imageUrl                                          String
+  typeId                                            Int
+  category1Id                                       Int?
+  category2Id                                       Int?
+  category3Id                                       Int?
+  types                                             types                 @relation(fields: [typeId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "entertainments_fk0")
+  categories_entertainments_category1IdTocategories categories?           @relation("entertainments_category1IdTocategories", fields: [category1Id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "entertainments_fk1")
+  categories_entertainments_category2IdTocategories categories?           @relation("entertainments_category2IdTocategories", fields: [category2Id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "entertainments_fk2")
+  categories_entertainments_category3IdTocategories categories?           @relation("entertainments_category3IdTocategories", fields: [category3Id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "entertainments_fk3")
+  entertainmentsUsers                               entertainmentsUsers[]
+}
+
+model entertainmentsUsers {
+  id              Int            @id @default(autoincrement())
+  userId          Int            @default(autoincrement())
+  entertainmentId Int            @default(autoincrement())
+  grade           Int            @default(autoincrement())
+  comment         Int            @default(autoincrement())
+  users           users          @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "entertainmentsUsers_fk0")
+  entertainments  entertainments @relation(fields: [entertainmentId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "entertainmentsUsers_fk1")
+}
+
+model goals {
+  id     Int   @id @default(autoincrement())
+  userId Int   @default(autoincrement())
+  grade  Int   @default(autoincrement())
+  typeId Int   @default(autoincrement())
+  month  Int
+  year   Int
+  users  users @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "goals_fk0")
+  types  types @relation(fields: [typeId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "goals_fk1")
+}
+
+model sessions {
+  id     Int    @id @default(autoincrement())
+  userId Int
+  token  String @unique
+  users  users  @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "sessions_fk0")
+}
+
+model types {
+  id             Int              @id @default(autoincrement())
+  name           String
+  entertainments entertainments[]
+  goals          goals[]
+}
+
+model users {
+  id                  Int                   @id @default(autoincrement())
+  username            String
+  email               String                @unique
+  password            String
+  pictureUrl          String?
+  darkMode            Boolean
+  entertainmentsUsers entertainmentsUsers[]
+  goals               goals[]
+  sessions            sessions[]
+}
