@@ -1,4 +1,3 @@
-
 import { logout, signin, signup } from "../controllers/auth.controller";
 import { Router } from "express";
 import { schemaValidation } from "../middlewares/schemaValidation";

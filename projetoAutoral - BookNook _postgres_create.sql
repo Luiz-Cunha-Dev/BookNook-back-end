@@ -45,19 +45,20 @@ CREATE TABLE "categories" (
 
 CREATE TABLE "entertainmentsUsers" (
 	"id" serial NOT NULL PRIMARY KEY,
-	"userId" serial NOT NULL,
-	"entertainmentId" serial NOT NULL,
-	"grade" serial NOT NULL,
-	"comment" serial NOT NULL
+	"userId" integer NOT NULL,
+	"entertainmentId" integer NOT NULL,
+	"grade" integer NOT NULL,
+	"comment" TEXT 
 );
 
 
 
 CREATE TABLE "goals" (
 	"id" serial NOT NULL PRIMARY KEY,
-	"userId" serial NOT NULL,
-	"grade" serial NOT NULL,
-	"typeId" serial NOT NULL,
+	"userId" integer NOT NULL,
+	"quantity" integer NOT NULL,
+	"goal" integer NOT NULL,
+	"typeId" integer NOT NULL,
 	"month" integer NOT NULL,
 	"year" integer NOT NULL
 );

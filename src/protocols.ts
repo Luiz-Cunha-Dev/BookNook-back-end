@@ -9,3 +9,13 @@ export type Signin = {
   password: string
 };
 
+export type Entertainment = {
+  name: string,
+  imageUrl: string,
+  typeId: number,
+  category1Id?: number,
+  category2Id?: number,
+  category3Id?: number,
+  grade?: number,
+  comment?: string
+};

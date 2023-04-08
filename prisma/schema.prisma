@@ -32,23 +32,24 @@ model entertainments {
 
 model entertainmentsUsers {
   id              Int            @id @default(autoincrement())
-  userId          Int            @default(autoincrement())
-  entertainmentId Int            @default(autoincrement())
-  grade           Int            @default(autoincrement())
-  comment         Int            @default(autoincrement())
+  userId          Int
+  entertainmentId Int
+  grade           Int
+  comment         String?
   users           users          @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "entertainmentsUsers_fk0")
   entertainments  entertainments @relation(fields: [entertainmentId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "entertainmentsUsers_fk1")
 }
 
 model goals {
-  id     Int   @id @default(autoincrement())
-  userId Int   @default(autoincrement())
-  grade  Int   @default(autoincrement())
-  typeId Int   @default(autoincrement())
-  month  Int
-  year   Int
-  users  users @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "goals_fk0")
-  types  types @relation(fields: [typeId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "goals_fk1")
+  id       Int   @id @default(autoincrement())
+  userId   Int
+  quantity Int
+  goal     Int
+  typeId   Int
+  month    Int
+  year     Int
+  users    users @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "goals_fk0")
+  types    types @relation(fields: [typeId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "goals_fk1")
 }
 
 model sessions {
