@@ -29,7 +29,7 @@ export type goal ={
 }
 
 export type user = {
-  pictureUrl: string,
+  pictureUrl?: string,
   email: string,
   username: string
 }

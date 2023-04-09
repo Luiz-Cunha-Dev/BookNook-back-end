@@ -7,7 +7,7 @@ export async function getUserById(id: number) {
     return result;
 }
 
-export async function updateUser(id: number, username: string, email: string, pictureUrl: string) {
+export async function updateUser(id: number, username: string, email: string, pictureUrl?: string) {
     const result = await prisma.users.update({
         where:{id},
         data:{username, email, pictureUrl}
