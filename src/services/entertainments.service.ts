@@ -202,6 +202,11 @@ async function getEntertainmentQuantity(userId: number) {
     return quantity;
 }
 
+async function getEntertainmentById(entertainmentId: number) {
+    const list = await entertainmentRepository.getEntertainmentsById(entertainmentId);
+    return list;
+}
+
 const entertainmentService = {
     getEntertainmentQuantity,
     getEntertainmentByType,
@@ -209,7 +214,8 @@ const entertainmentService = {
     postNewEntertainment,
     putEntertainment,
     deleteEntertainment,
-    getCategories
+    getCategories,
+    getEntertainmentById
 };
 
 export default entertainmentService;

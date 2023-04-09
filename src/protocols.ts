@@ -19,3 +19,17 @@ export type Entertainment = {
   grade?: number,
   comment?: string
 };
+
+export type goal ={
+  quantity: number,
+  goal: number,
+  typeId: number,
+  month: number,
+  year: number
+}
+
+export type user = {
+  pictureUrl: string,
+  email: string,
+  username: string
+}

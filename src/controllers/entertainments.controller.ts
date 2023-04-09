@@ -3,6 +3,20 @@ import httpStatus from "http-status";
 import { Entertainment } from "protocols";
 import entertainmentService from "../services/entertainments.service"
 
+export async function getEntertainmentById(req: Request, res: Response) {
+    const userId: number = res.locals.userId;
+    const {entertainmentId} = req.params;
+
+    try {
+        const list = await entertainmentService.getEntertainmentById(Number(entertainmentId));
+
+        return res.send(list);
+
+    } catch (err) {
+        console.error(err);
+        return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
 
 export async function getCategories(req: Request, res: Response) {
 

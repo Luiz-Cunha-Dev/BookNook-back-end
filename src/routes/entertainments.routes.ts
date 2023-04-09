@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { tokenValidation } from "../middlewares/tokenValidation";
-import { deleteEntertainment, getAllEntertainments, getCategories, getEntertainmentByType, getEntertainmentQuantity, postNewEntertainment, putEntertainment } from "../controllers/entertainments.controller";
+import { deleteEntertainment, getAllEntertainments, getCategories, getEntertainmentById, getEntertainmentByType, getEntertainmentQuantity, postNewEntertainment, putEntertainment } from "../controllers/entertainments.controller";
 import { schemaValidation } from "../middlewares/schemaValidation";
 import entertainmentSchema from "../schemas/entertainments.schema";
 
@@ -10,6 +10,7 @@ entertainmentRouter
 .all("/entertainment/*", tokenValidation)
 .get("/entertainment/categories", getCategories)
 .get("/entertainment/type/:typeName", getEntertainmentByType)
+.get("/entertainment/id/:entertainmentId", getEntertainmentById)
 .get("/entertainment/all", getAllEntertainments)
 .get("/entertainment/quantity", getEntertainmentQuantity)
 .post("/entertainment/create", schemaValidation(entertainmentSchema), postNewEntertainment)
