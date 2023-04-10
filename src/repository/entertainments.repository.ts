@@ -108,7 +108,9 @@ async function deleteEntertainmentById(id: number) {
 }
 
 async function getCategories() {
-    const result = await prisma.categories.findMany();
+    const result = await prisma.categories.findMany({
+        orderBy:{id: "asc"}
+    });
     return result;
 }
 

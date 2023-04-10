@@ -3,25 +3,6 @@ import httpStatus from "http-status";
 import { goal } from "../protocols";
 import goalsService from "../services/goals.service";
 
-export async function putGoal(req: Request, res: Response) {
-    const userId: number = res.locals.userId;
-    const {goalId} = req.params;
-    const goalData = req.body as goal;
-
-    try {
-
-        await goalsService.putGoals(userId, Number(goalId), goalData);
-
-        return res.sendStatus(httpStatus.OK);
-
-    } catch (err) {
-        console.error(err);
-        if(err.name === "NOT_FOUND"){
-            return res.sendStatus(httpStatus.NOT_FOUND)
-          }
-        return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
-    }
-}
 
 export async function postGoal(req: Request, res: Response) {
     const userId: number = res.locals.userId;

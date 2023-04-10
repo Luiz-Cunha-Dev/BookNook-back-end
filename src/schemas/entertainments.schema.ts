@@ -7,7 +7,7 @@ const entertainmentSchema = Joi.object({
     category1Id: Joi.number(),
     category2Id: Joi.number(),
     category3Id: Joi.number(),
-    grade: Joi.number(),
+    grade: Joi.number() || null,
     comment: Joi.string()
 })
 

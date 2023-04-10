@@ -8,9 +8,9 @@ export async function getGoalsByUserId(userId: number) {
     return result;
 }
 
-export async function getGoalsByUserIdAndDate(userId: number, month: number, year: number) {
+export async function getGoalsByUserIdAndDate(userId: number, month: number, year: number, typeId: number) {
     const result = await prisma.goals.findMany({
-        where:{userId, month, year}
+        where:{userId, month, year, typeId}
     })
     return result;
 }
