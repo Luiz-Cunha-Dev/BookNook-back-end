@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon src/server.ts",
     "build": "tsc",
-    "start": "node dist/src/server.js",
+    "start": "node dist/server.js",
     "prisma:seed": "npx prisma db seed",
     "test": "dotenv -e .env.test jest"
   },
