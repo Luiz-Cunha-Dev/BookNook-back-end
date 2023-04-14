@@ -26,9 +26,17 @@ async function getMostViewed() {
     return result;
 }
 
+async function getEntertainmentById(id:number){
+    const result = await prisma.entertainments.findUnique({
+        where: {id}
+    })
+    return result;
+}
+
 const rankingRepository = {
     getHighestRated,
-    getMostViewed
+    getMostViewed,
+    getEntertainmentById
 };
 
 export default rankingRepository;
