@@ -135,6 +135,8 @@ export async function postNewEntertainment(
         entertainmentData.category3Id
     );
 
+    console.log(entertainmentData);
+    
     const newUserEntertainment =
         await entertainmentRepository.addNewEntertainment(
             userId,
@@ -144,6 +146,15 @@ export async function postNewEntertainment(
         );
 
     return newUserEntertainment;
+}
+
+export async function postExistingEntertainment(
+    userId: number,
+    entertainmentId: number
+) {
+    await entertainmentRepository.addNewEntertainment(userId, entertainmentId, 0, " ");
+
+    return
 }
 
 async function getAllEntertainments() {
@@ -215,7 +226,8 @@ const entertainmentService = {
     putEntertainment,
     deleteEntertainment,
     getCategories,
-    getEntertainmentById
+    getEntertainmentById,
+    postExistingEntertainment
 };
 
 export default entertainmentService;

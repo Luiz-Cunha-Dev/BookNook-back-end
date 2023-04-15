@@ -83,6 +83,21 @@ export async function postNewEntertainment(req: Request, res: Response) {
     }
 }
 
+export async function postExistingEntertainment(req: Request, res: Response) {
+    const userId: number = res.locals.userId;
+    const {entertainmentId} = req.params;
+
+    try {
+        await entertainmentService.postExistingEntertainment(userId, Number(entertainmentId));
+
+        return res.sendStatus(httpStatus.CREATED);
+
+    } catch (err) {
+        console.error(err);
+        return res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+
 export async function getAllEntertainments(req: Request, res: Response) {
 
     try {
