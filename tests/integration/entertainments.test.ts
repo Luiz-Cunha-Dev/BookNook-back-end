@@ -12,6 +12,9 @@ beforeEach(async () => {
 });
 
 describe("GET /entertainment/type/:typeName", () => {
+  beforeEach(async () => {
+    await cleanDb();
+  });
   it("should respond with status 401 if no token is given", async () => {
     const entertainment = await createNewEntertainment();
     const response = await server.get(`/entertainment/type/${entertainment.type.name}`);
@@ -31,6 +34,9 @@ describe("GET /entertainment/type/:typeName", () => {
 });
 
 describe("POST /entertainment/create", () => {
+  beforeEach(async () => {
+  await cleanDb();
+});
   it("should respond with status 401 if no token is given", async () => {
     const entertainment = await createNewEntertainment();
     const response = await server.post(`/entertainment/create`).send({
@@ -58,7 +64,6 @@ describe("POST /entertainment/create", () => {
       category2Id: entertainment.category.id,
       category3Id: entertainment.category.id
     });
-    console.log(response);
     expect(response.status).toBe(httpStatus.CREATED);
 
     
