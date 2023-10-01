@@ -2,12 +2,6 @@
 
 Api to save your movie list
 
-
-## Description
-
-This api was created to be a movie organizer, where you can enter the movies you'd like to watch and the movies you've already watched.</br>
-You can also add a score for each movie you watched
-
 ## Getting Started
 
 ### Dependencies
@@ -35,93 +29,6 @@ npm i
 
 ```bash
 npm run dev
-```
-
-## Routes 
-
-Link deploy = https://api-movie-diary.onrender.com
- 
-</br>
-
-### Insert new movie
-```bash
-POST: /movies
-
-Body: { 
- "title": "Os Vingadores",
- "platform": "Netflix",
- "genre": "ação"
- }
-```
-</br>
-
-### Get all movie
-```bash
-GET: /movies
-
-[
-    {
-    "id": 1,
-    "title": "Os Vingadores",
-    "status": false,
-    "platform": "Netflix",
-    "genre": "ação",
-    "score": null
-    },
-    {
-    "id": 1,
-    "title": "Tekken",
-    "status": true,
-    "platform": "Netflix",
-    "genre": "luta",
-    "score": 3
-    },
-    {...}
-]
-```
-</br>
-
-### Update movie status 
-(change status to true and add score)
-```bash
-PUT: /movies/:id
-
-Body: { "score": 5}
-```
-
-</br>
-
-### Update movie status 
-(if the movie has true status change the status to false and delete the score)
-```bash
-PUT: /movies/:id
-```
-
-</br>
-
-### Delete a movie
-```bash
-DEL: /movies/:id
-```
-</br>
-
-### Get all genres and movies quantity
-```bash
-GET: /movies/genres
-
-[
-  {
-    "id": 2,
-    "genreName": "fantasia",
-    "count": "3"
-  },
-  {
-    "id": 3,
-    "genreName": "ação",
-    "count": "4"
-  },
-  {...}
-]
 ```
 
 
